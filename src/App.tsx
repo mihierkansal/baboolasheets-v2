@@ -3,7 +3,7 @@ import { createSignal } from "solid-js";
 import Papa from "papaparse";
 
 const INITIAL_TWIDTH = 11;
-const INITIAL_THEIGHT = 16;
+const INITIAL_THEIGHT = 26;
 
 function createInitialTable() {
   return new Array(INITIAL_THEIGHT)
