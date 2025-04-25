@@ -67,6 +67,11 @@ function App() {
           <button
             onClick={() => {
               table[1](createInitialTable());
+              selectedCell[1]((v) => {
+                v.x = Math.min(v.x, Math.max(table[0]()[0].length - 1, 0));
+                v.y = Math.min(v.y, Math.max(table[0]().length - 1, 0));
+                return { ...v };
+              });
             }}
           >
             <span>
@@ -300,11 +305,13 @@ function App() {
         return Number(row[col]);
       })
       .filter((cellValue) => !Number.isNaN(cellValue))
-      .sort();
+      .sort((a, b) => a - b);
 
     if (sortedToCalculateMedianOf.length === 0) {
       return sortedToCalculateMedianOf;
     }
+
+    console.log(sortedToCalculateMedianOf);
 
     const mid = Math.floor(sortedToCalculateMedianOf.length / 2);
 
