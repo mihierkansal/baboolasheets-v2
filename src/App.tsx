@@ -176,6 +176,7 @@ function App() {
 
           <div id="bottombar-rightsection">
             <button
+              id="sum"
               onClick={() => {
                 const rows = getRowsTillSelectedCell();
                 const sum = sumSelectedColInRows(rows);
@@ -185,6 +186,7 @@ function App() {
               <span>Sum</span>
             </button>
             <button
+              id="avg"
               onClick={() => {
                 const rows = getRowsTillSelectedCell();
                 const sum = sumSelectedColInRows(rows);
@@ -193,6 +195,17 @@ function App() {
               }}
             >
               Avg
+            </button>
+            <button
+              id="median"
+              onClick={() => {
+                const rows = getRowsTillSelectedCell();
+                const median = medianOfSelectedColInRows(rows);
+
+                updateSelectedCellAndRerender(median.toString());
+              }}
+            >
+              Median
             </button>
             <div class="disp">
               Row {selectedCell[0]()?.y + 1}
@@ -278,6 +291,31 @@ function App() {
       }
     });
     return sum;
+  }
+  function medianOfSelectedColInRows(rows: string[][]) {
+    const col = selectedCell[0]()!.x;
+
+    let sortedToCalculateMedianOf = rows
+      .map((row) => {
+        return Number(row[col]);
+      })
+      .filter((cellValue) => !Number.isNaN(cellValue))
+      .sort();
+
+    if (sortedToCalculateMedianOf.length === 0) {
+      return sortedToCalculateMedianOf;
+    }
+
+    const mid = Math.floor(sortedToCalculateMedianOf.length / 2);
+
+    if (sortedToCalculateMedianOf.length % 2 === 0) {
+      return (
+        (sortedToCalculateMedianOf[mid] + sortedToCalculateMedianOf[mid - 1]) /
+        2
+      );
+    } else {
+      return sortedToCalculateMedianOf[mid];
+    }
   }
 }
 

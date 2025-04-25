@@ -162,6 +162,13 @@ button {
     box-shadow: inset 0 2px 5px #0004;
   }
 }
+@media screen and (max-width: 800px) {
+  #sum,
+  #avg,
+  #median {
+    display: none;
+  }
+}
 
 input {
   font-family: inherit;
