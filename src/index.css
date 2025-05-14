@@ -100,9 +100,11 @@ h1 {
     gap: 1rem;
     align-items: center;
     justify-content: space-between;
-
     box-shadow: inset 0 2px 5px #0004, 0 -2px 2px #0002, 0 3px 2px #fff9,
       inset 0 0 0 1px grey;
+    & .material-symbols-outlined {
+      margin-right: 0;
+    }
   }
 }
 @media screen and (max-width: 800px) {
