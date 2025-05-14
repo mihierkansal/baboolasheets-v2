@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "baboolastyles": "^0.1.1",
     "papaparse": "^5.5.2",
     "solid-js": "^1.9.5"
   },

@@ -1,6 +1,7 @@
 import { For } from "solid-js";
 import { createSignal } from "solid-js";
 import Papa from "papaparse";
+import "baboolastyles/public/plastic.css";
 
 const INITIAL_TWIDTH = 11;
 const INITIAL_THEIGHT = 26;
@@ -20,7 +21,7 @@ function App() {
   return (
     <>
       <div id="container">
-        <div id="toolbar">
+        <div class="toolbar" id="toolbar">
           <input
             type="file"
             hidden
@@ -139,7 +140,7 @@ function App() {
             }}
           </For>
         </table>
-        <div id="bottombar">
+        <div id="bottombar" class="toolbar">
           <button
             onClick={() => {
               table[1]((v) => {
@@ -199,7 +200,7 @@ function App() {
                 updateSelectedCellAndRerender(average.toString());
               }}
             >
-              Avg
+              <span>Avg</span>
             </button>
             <button
               id="median"
@@ -210,7 +211,7 @@ function App() {
                 updateSelectedCellAndRerender(median.toString());
               }}
             >
-              Median
+              <span>Median</span>
             </button>
             <div class="disp">
               Row {selectedCell[0]()?.y + 1}
